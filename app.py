@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, send_from_directory, debughelpers, redirect
 from functions import get_posts_by_tag, get_all_tags_from_posts
+from os import path
 
 POST_PATH = "posts.json"
 UPLOAD_FOLDER = "uploads/images"
@@ -28,13 +29,16 @@ def page_post_form():
 @app.route("/post", methods=["POST"])
 def page_post_create():
     picture = request.files.get("picture")
-    content =  request.values.get("content")
+    content = request.values.get("content")
     if not picture:
         return redirect("/post")
     filename = picture.filename
-    path = UPLOAD_FOLDER+"./"+filename
+    #path = UPLOAD_FOLDER+"/"+filename
+    uploads_path = UPLOAD_FOLDER
+    #from os import path
+    path.join("uploads_path, file_name")
 
-    picture.save(path)
+    #picture.save(path)
     picture_new_url = "/"+UPLOAD_FOLDER+"/"+filename
     return render_template("post_uploaded.html", picture=picture_new_url, content=content)
 

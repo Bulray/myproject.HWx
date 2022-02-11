@@ -36,5 +36,3 @@ def get_all_tags_from_posts():
 
     return list(tags)
 
-
-#print(get_all_tags_from_str("#food #food #cats"))
