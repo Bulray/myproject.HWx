@@ -29,16 +29,13 @@ def page_post_form():
 @app.route("/post", methods=["POST"])
 def page_post_create():
     picture = request.files.get("picture")
-    content = request.values.get("content")
+    content =  request.values.get("content")
     if not picture:
         return redirect("/post")
     filename = picture.filename
-    #path = UPLOAD_FOLDER+"/"+filename
-    uploads_path = UPLOAD_FOLDER
-    #from os import path
-    path.join("uploads_path, file_name")
+    path = UPLOAD_FOLDER+"/"+filename
 
-    #picture.save(path)
+    picture.save(path)
     picture_new_url = "/"+UPLOAD_FOLDER+"/"+filename
     return render_template("post_uploaded.html", picture=picture_new_url, content=content)
 
